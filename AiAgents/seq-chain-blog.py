@@ -18,7 +18,8 @@ title_prompt_template  = PromptTemplate(
 )
 
 title_chain = title_prompt_template | llm | StrOutputParser() | (lambda title  : (st.write(title), title)[1])
-
+# Prompt template for generating the blog post content
+# The content generation prompt is designed to create a detailed blog post based on the title provided by the previous step.
 content_prompt_template  = PromptTemplate(
     input_variables=["title","audience","noOfSentences"],
     template="You are a senior content writer. Write a detailed blog post based on the title '{title}' " \
